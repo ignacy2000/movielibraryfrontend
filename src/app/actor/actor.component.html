@@ -16,7 +16,7 @@
     />
   </div>
   <div class="form-group">
-    <label for="surname">Name</label>
+    <label for="surname">Surname</label>
     <input
       type="text"
       ngModel
@@ -36,18 +36,6 @@
       class="form-control"
       id="email"
       placeholder="Email"
-      required
-    />
-  </div>
-  <div class="form-group">
-    <label for="jobtitle">Job title</label>
-    <input
-      type="text"
-      ngModel
-      name="jobTitle"
-      class="form-control"
-      id="jobTile"
-      placeholder="Job title"
       required
     />
   </div>
@@ -75,15 +63,19 @@
       required
     />
   </div>
+  <div class="form-group">
+    <label for="nationality">Nationality</label>
+    <input
+      type="text"
+      ngModel
+      name="nationality"
+      class="form-control"
+      id="nationality"
+      placeholder="Nationality"
+      required
+    />
+  </div>
   <div class="modal-footer">
-    <button
-      type="button"
-      id="add-actor-form"
-      class="btn btn-secondary"
-      data-dismiss="modal"
-    >
-      Close
-    </button>
     <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">
       Save changes
     </button>
