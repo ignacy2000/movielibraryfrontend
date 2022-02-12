@@ -11,6 +11,8 @@ import { ActorService } from '../service/actor.service';
 })
 export class ActorComponent implements OnInit {
   public actors: Actor[] = [];
+  public findActorByIdActorId: number = 0;
+  public findActorByIdWhatWasFound: String = '';
 
   constructor(private actorService: ActorService) {}
 
@@ -34,6 +36,44 @@ export class ActorComponent implements OnInit {
     this.actorService.addActor(addForm.value).subscribe(
       (response: Actor) => {
         console.log(response);
+        this.getActors();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
+  public onChangeActor(changeForm: NgForm): void {
+    document.getElementById('change-actor-form')?.click();
+    this.actorService.changeActor(changeForm.value).subscribe(
+      (response: Actor) => {
+        console.log(response);
+        this.getActors();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
+  public onDeleteActor(actorId: number): void {
+    this.actorService.deleteActor(actorId).subscribe(
+      (response: Actor) => {
+        console.log(response);
+        this.getActors();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    );
+  }
+
+  public findActor(): void {
+    this.actorService.findActor(this.findActorByIdActorId).subscribe(
+      (response: Actor) => {
+        console.log(response);
+        this.findActorByIdWhatWasFound = response.name + ', ' + response.id;
         this.getActors();
       },
       (error: HttpErrorResponse) => {
